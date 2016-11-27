@@ -20,3 +20,5 @@ Route::get('/user', function (Request $request) {
 Route::get('/test',[
 	'uses'=>'randomTests@speechClientTest'
 ]);
+
+
