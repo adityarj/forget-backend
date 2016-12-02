@@ -38,9 +38,19 @@ Route::get('/fetch',[
     'uses'=>'getItems@ItemController'
 ]);
 
-Route::get('/get',[
+Route::post('/complete',[
     'prefix'=>'item',
-    'uses'=>'getItemByWeight@ItemController'
+    'uses'=>'completeItems@ItemController'
+]);
+
+Route::get('/get',[
+    'prefix'=>'system',
+    'uses'=>'getItemByWeight@SystemController'
+]);
+
+Route::post('/weight',[
+    'prefix'=>'system',
+    'uses'=>'handleWeight@SystemController'
 ]);
 
 

@@ -11,8 +11,7 @@ class ItemController extends Controller
 
         $item = new Item();
         $item->item = $request->get('item');
-        $item->id = $request->get('id');
-        $item->weight = $request->get('weight');
+        $item->bin = $request->get('bin');
         $item->save();
 
     }
@@ -25,27 +24,24 @@ class ItemController extends Controller
             Item::where('item',$request->get('item'))->delete();
         } else {
             $error['Error'] = 'Item not found';
-            return $error;
+            return json_encode($error);
         }
 
     }
 
-    public function getItems(Request $request) {
+    public function getItems() {
+
         $item = Item::all();
         return json_encode($item);
-    }
-
-    public function getItemByWeight(Request $request) {
 
     }
 
-    public function handleWeight(Request $request) {
+    public function completeItem(Request $request) {
 
-        $item = new Item();
-        $item->weight = $request->get('weight');
+        $item = Item::where('item','=',null)->get();
+        $item->item = $request->get('item');
+        $item->bin = $request->get('bin');
         $item->save();
-
-        //Pass id to app to let user enter data
 
     }
 }
