@@ -45,7 +45,6 @@ class GoogleServiceProvider
         $object->setContent($file);
 
         $async = new \Google_Service_Speech_SyncRecognizeRequest();
-
         $async->setConfig($config);
         $async->setAudio($object);
 

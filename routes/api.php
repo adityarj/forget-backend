@@ -22,3 +22,25 @@ Route::get('/test',[
 ]);
 
 
+//Routes related to maintainence of items
+Route::post('/add',[
+    'prefix'=>'item',
+    'uses'=>'handleItem@ItemController'
+]);
+
+Route::post('/delete',[
+    'prefix'=>'item',
+    'uses'=>'removeItem@ItemController'
+]);
+
+Route::get('/fetch',[
+    'prefix'=>'item',
+    'uses'=>'getItems@ItemController'
+]);
+
+Route::get('/get',[
+    'prefix'=>'item',
+    'uses'=>'getItemByWeight@ItemController'
+]);
+
+
