@@ -12,6 +12,7 @@ class ItemController extends Controller
         $item = new Item();
         $item->item = $request->get('item');
         $item->bin = $request->get('bin');
+        $item->weight = 0;
         $item->save();
 
     }

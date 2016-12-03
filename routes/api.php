@@ -21,27 +21,24 @@ Route::get('/test',[
 	'uses'=>'randomTests@speechClientTest'
 ]);
 
-
 //Routes related to maintainence of items
-Route::post('/add',[
-    'prefix'=>'item',
-    'uses'=>'handleItem@ItemController'
-]);
+Route::group(['prefix' => 'item'], function () {
+    Route::post('/add',[
+        'uses'=>'ItemController@handleItem'
+    ]);
 
-Route::post('/delete',[
-    'prefix'=>'item',
-    'uses'=>'removeItem@ItemController'
-]);
+    Route::post('/delete',[
+        'uses'=>'ItemController@removeItem'
+    ]);
 
-Route::get('/fetch',[
-    'prefix'=>'item',
-    'uses'=>'getItems@ItemController'
-]);
+    Route::get('/fetch',[
+        'uses'=>'ItemController@getItems'
+    ]);
 
-Route::post('/complete',[
-    'prefix'=>'item',
-    'uses'=>'completeItems@ItemController'
-]);
+    Route::post('/complete',[
+        'uses'=>'ItemController@completeItems'
+    ]);
+});
 
 Route::get('/get',[
     'prefix'=>'system',
