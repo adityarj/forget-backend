@@ -14,15 +14,17 @@ class SystemController extends Controller
     //Below api is for when a negative weight is posted by the system
     public function getItemByWeight(Request $request) {
 
-        $item = Item::where('weight','>=',$request->get('weight') - 0.5)
-            ->where('weight','<=',$request->get('weight') + 0.5)
+        $weight = abs($request->get('weight'));
+
+        $item = Item::where('weight','>=',$weight - 0.5)
+            ->where('weight','<=',$weight + 0.5)
             ->get();
 
-        if ($item) {
-            return json_encode($item);
-        } else {
-            return null;
-        }
+//        if ($item) {
+//            return json_encode($item);
+//        } else {
+//            return null;
+//        }
 
     }
 
@@ -41,4 +43,26 @@ class SystemController extends Controller
 
 
     }
+
+    public function handleDoorClose(Request $request) {
+        //send push notification
+        if ($request->get('closed')) {
+            $data['status'] = 'success';
+            return json_encode($data);
+        } else {
+            $data['status'] = 'failed';
+            return json_encode($data);
+        }
+
+     }
+
+     public function transmitSignal() {
+
+        $appRequestSuccess = true;
+
+        if ($appRequestSuccess) {
+            $data['status'] = true;
+            return json_encode($data);
+        }
+     }
 }

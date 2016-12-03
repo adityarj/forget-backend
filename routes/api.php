@@ -40,14 +40,21 @@ Route::group(['prefix' => 'item'], function () {
     ]);
 });
 
-Route::get('/get',[
-    'prefix'=>'system',
-    'uses'=>'getItemByWeight@SystemController'
-]);
+Route::group(['prefix' => 'system'],function () {
+    Route::post('/get',[
+        'uses'=>'SystemController@getItemByWeight'
+    ]);
+    Route::post('/weight',[
+        'uses'=>'SystemController@handleWeight'
+    ]);
+    Route::post('/close',[
+        'uses'=>'SystemController@completeItem'
+    ]);
+    Route::get('/contain',[
+        'uses'=>'SystemController@transmitSignal'
+    ]);
+});
 
-Route::post('/weight',[
-    'prefix'=>'system',
-    'uses'=>'handleWeight@SystemController'
-]);
+
 
 
