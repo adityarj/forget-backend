@@ -48,7 +48,7 @@ Route::group(['prefix' => 'system'],function () {
         'uses'=>'SystemController@handleWeight'
     ]);
     Route::post('/close',[
-        'uses'=>'SystemController@completeItem'
+        'uses'=>'SystemController@handleDoorClose'
     ]);
     Route::get('/contain',[
         'uses'=>'SystemController@transmitSignal'
