@@ -26,6 +26,8 @@ class SystemController extends Controller
 //            return null;
 //        }
 
+        return true;
+
     }
 
     //Below api is for when a  positive weight is posted by the system
@@ -40,6 +42,8 @@ class SystemController extends Controller
             $item->weight = $request->get('weight');
             $item->save();
         }
+
+        return true;
 
 
     }
