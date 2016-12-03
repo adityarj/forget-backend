@@ -26,7 +26,8 @@ class SystemController extends Controller
 //            return null;
 //        }
 
-        return true;
+        $data['status'] = 'success';
+        return json_encode($data);
 
     }
 
@@ -43,7 +44,8 @@ class SystemController extends Controller
             $item->save();
         }
 
-        return true;
+        $data['status'] = 'success';
+        return json_encode($data);
 
 
     }
