@@ -36,11 +36,13 @@ class SystemController extends Controller
 
         $item_original =  Item::where('weight',null)->get();
 
-        if ($item_original) {
+        if ($item_original[0]) {
             $item_original->weight = $request->get('weight');
         } else {
             $item = new Item();
             $item->weight = $request->get('weight');
+            $item->item = "none";
+            $item->bin = 0;
             $item->save();
         }
 
