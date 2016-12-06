@@ -23,6 +23,7 @@ class ItemController extends Controller
 
         if ($item) {
             Item::where('item',$request->get('item'))->delete();
+            return json_encode($item);
         } else {
             $error['Error'] = 'Item not found';
             return json_encode($error);
