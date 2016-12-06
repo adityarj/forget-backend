@@ -34,7 +34,7 @@ class SystemController extends Controller
     //Below api is for when a  positive weight is posted by the system
     public function handleWeight(Request $request) {
 
-        $item_original =  Item::where('weight',null)->get();
+        $item_original =  Item::where('weight',0)->get();
 
         if ($item_original[0]) {
             $item_original->weight = $request->get('weight');

@@ -22,8 +22,7 @@ class ItemController extends Controller
         $item = Item::where('item',$request->get('item'))->get();
 
         if ($item[0]) {
-            Item::w
-            ere('item',$request->get('item'))->delete();
+            Item::were('item',$request->get('item'))->delete();
             return json_encode($item);
         } else {
             $error['Error'] = 'Item not found';
