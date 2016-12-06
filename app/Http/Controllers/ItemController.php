@@ -47,8 +47,8 @@ class ItemController extends Controller
     }
 
     public function resetItems(Request $request) {
-        $item = Item::all();
-        $item->delete();
+
+        Item::truncate();
 
         $data['result'] = 'sucess';
         return $data;
