@@ -45,4 +45,9 @@ class ItemController extends Controller
         $item->save();
 
     }
+
+    public function resetItems(Request $request) {
+        $item = Item::all();
+        $item->delete();
+    }
 }
