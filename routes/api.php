@@ -38,6 +38,9 @@ Route::group(['prefix' => 'item'], function () {
     Route::post('/complete',[
         'uses'=>'ItemController@completeItems'
     ]);
+    Route::get('/reset',[
+        'uses'=>'ItemController@resetItems'
+    ]);
 });
 
 Route::group(['prefix' => 'system'],function () {
