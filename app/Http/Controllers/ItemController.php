@@ -22,13 +22,24 @@ class ItemController extends Controller
         $item = Item::where('item',$request->get('item'))->get();
 
         if ($item[0]) {
-            Item::were('item',$request->get('item'))->delete();
-            return json_encode($item);
+            $result['Delete'] = 'Success';
+            return json_encode($result);
         } else {
             $error['Error'] = 'Item not found';
             return json_encode($error);
         }
 
+    }
+
+    public function checkItem(Request $request) {
+
+       $item = Item::where('item',$request->get('item')->get());
+       if($item[0]) {
+           return json_encode($item);
+       } else {
+           $error['Error'] = 'Item not found';
+           return json_encode($error);
+       }
     }
 
     public function getItems() {

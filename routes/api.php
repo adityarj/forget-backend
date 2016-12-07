@@ -41,6 +41,9 @@ Route::group(['prefix' => 'item'], function () {
     Route::get('/reset',[
         'uses'=>'ItemController@resetItems'
     ]);
+    Route::get('/check',[
+        'uses'=>'ItemController@checkItem'
+    ]);
 });
 
 Route::group(['prefix' => 'system'],function () {
