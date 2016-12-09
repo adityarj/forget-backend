@@ -16,7 +16,7 @@ class ItemController extends Controller
         $item->save();
 
         $data['success'] = 'true';
-        return $data;
+        return json_encode($data);
 
     }
 
@@ -59,6 +59,9 @@ class ItemController extends Controller
         $item->bin = $request->get('bin');
         $item->save();
 
+        $data['completed'] = 'true';
+        return json_encode($data);
+
     }
 
     public function resetItems(Request $request) {
@@ -66,6 +69,6 @@ class ItemController extends Controller
         Item::truncate();
 
         $data['result'] = 'sucess';
-        return $data;
+        return json_encode($data);
     }
 }
