@@ -15,6 +15,9 @@ class ItemController extends Controller
         $item->weight = 0;
         $item->save();
 
+        $data['success'] = 'true';
+        return $data;
+
     }
 
     public function removeItem(Request $request) {
