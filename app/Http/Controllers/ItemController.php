@@ -24,7 +24,7 @@ class ItemController extends Controller
 
         $item = Item::where('item',$request->get('item'))->get();
 
-        if ($item[0]) {
+        if ($item != null) {
             $result['Delete'] = 'Success';
             return json_encode($result);
         } else {
@@ -37,7 +37,7 @@ class ItemController extends Controller
     public function checkItem(Request $request) {
 
        $item = Item::where('item',$request->get('item'))->get();
-       if($item[0]) {
+       if($item != null) {
            return json_encode($item);
        } else {
            $error['Error'] = 'Item not found';
