@@ -36,7 +36,7 @@ class ItemController extends Controller
 
     public function checkItem(Request $request) {
 
-       $item = Item::where('item',$request->get('item')->get());
+       $item = Item::where('item',$request->get('item'))->get();
        if($item[0]) {
            return json_encode($item);
        } else {
