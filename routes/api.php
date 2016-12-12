@@ -56,7 +56,7 @@ Route::group(['prefix' => 'system'],function () {
     Route::get('/contain',[
         'uses'=>'SystemController@transmitSignal'
     ]);
-    Route:;post('/test',[
+    Route::post('/test',[
         'uses'=>'SystemController@checkPost'
     ]);
 });
