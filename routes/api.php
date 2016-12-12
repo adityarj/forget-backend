@@ -47,11 +47,23 @@ Route::group(['prefix' => 'item'], function () {
 });
 
 Route::group(['prefix' => 'system'],function () {
-    Route::post('/get',[
+    Route::post('/minus',[
         'uses'=>'SystemController@getItemByWeight'
     ]);
-    Route::post('/weight',[
+    Route::post('/plus',[
         'uses'=>'SystemController@handleWeight'
+    ]);
+    Route::get('/active',[
+        'uses'=>'SystemController@getActive'
+    ]);
+    Route::get('/null',[
+        'uses'=>'SystemController@setActiveToNull'
+    ]);
+    Route::get('/new',[
+        'uses'=>'SystemController@addActive'
+    ]);
+    Route::get('/get',[
+        'uses'=>'SystemController@showAllActive'
     ]);
     Route::get('/contain',[
         'uses'=>'SystemController@transmitSignal'
