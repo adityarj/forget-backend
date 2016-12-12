@@ -45,9 +45,9 @@ class SystemController extends Controller
         $item_original =  Item::where('weight',0)->get();
 
         if (!$item_original->isEmpty()) {
-
-            $item_original->weight = $request->get('weight');
-            $item_original->save();
+            $item_new_value = Item::where('weight',0);
+            $item_new_value->weight = $request->get('weight');
+            $item_new_value->save();
 
         } else {
             $item = new Item();
