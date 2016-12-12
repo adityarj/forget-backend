@@ -68,7 +68,7 @@ class ItemController extends Controller
 
         Item::truncate();
 
-        $data['result'] = 'sucess';
+        $data['result'] = 'Success';
         return json_encode($data);
     }
 }

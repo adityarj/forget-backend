@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\activeItem;
 use Illuminate\Http\Request;
 use App\Item;
 
@@ -18,8 +19,20 @@ class SystemController extends Controller
             ->get();
 
         if (!$item->isEmpty()) {
+
+            $active = activeItem::where('bin','=','comp1');
+            $active->item = $item->item;
+            $active->change = -1;
+            $active->save();
+
             return json_encode($item);
         } else {
+
+            $active = activeItem::where('bin','=','comp1');
+            $active->item = "Cannot identify";
+            $active->change = -1;
+            $active->save();
+
             $result['result'] = 'item not found';
             return json_encode($result);
         }
@@ -31,11 +44,24 @@ class SystemController extends Controller
 
         $item_original =  Item::where('weight',0)->get();
 
+        if (!$item_original->isEmpty()) {
+
+            $item_original->weight = $request->get('weight');
+            $item_original->save();
+            
+        } else {
             $item = new Item();
             $item->weight = $request->get('weight');
             $item->item = "none";
             $item->bin = 0;
             $item->save();
+
+            $active = activeItem::where('bin','=','comp1');
+            $active->item = $item->item;
+            $active->change = 1;
+            $active->save();
+
+        }
 
         $data['status'] = 'success';
         return json_encode($data);
