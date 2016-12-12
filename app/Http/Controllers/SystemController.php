@@ -89,6 +89,7 @@ class SystemController extends Controller
     public function addActive() {
         $active = new activeItem();
         $active->item = "null";
+        $active->bin = "comp1";
         $active->change = 0;
         $active->save();
 
