@@ -10,8 +10,9 @@ class doorController extends Controller
     //Function to handle door change, call when the door is open or closed
     public function handleDoorChange(Request $request) {
 
-        $door = doorStatus::where('compartment','=','comp1');
+        $door = doorStatus::where('compartment','comp1');
         $door->status = $request->get('status');
+        $door->save();
 
         $result['result'] = 'success';
 
