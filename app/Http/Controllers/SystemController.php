@@ -120,6 +120,13 @@ class SystemController extends Controller
     //Just for Zou's testing purpose
     public function checkPost(Request $request) {
 
+        $active = new activeItem();
+        $active->item = "null";
+        $active->bin = $request->get('code');
+        $active->change = 0;
+        $active->save();
+
+
         $value = $request->get('code');
         $result['result'] = 'You sent a code '.$value;
 
