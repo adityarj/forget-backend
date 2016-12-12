@@ -88,6 +88,13 @@ class SystemController extends Controller
         return json_encode($result);
     }
 
+    //Clear all the cache for the active requests
+    public function deleteActive() {
+        activeItem::truncate();
+        $result['result'] = 'success';
+        return json_encode($result);
+    }
+
     //Add active record when needed
     public function addActive() {
         $active = new activeItem();
@@ -125,7 +132,6 @@ class SystemController extends Controller
         $active->bin = $request->get('code');
         $active->change = 0;
         $active->save();
-
 
         $value = $request->get('code');
         $result['result'] = 'You sent a code '.$value;
