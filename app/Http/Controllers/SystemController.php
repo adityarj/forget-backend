@@ -48,7 +48,7 @@ class SystemController extends Controller
 
             $item_original->weight = $request->get('weight');
             $item_original->save();
-            
+
         } else {
             $item = new Item();
             $item->weight = $request->get('weight');
@@ -68,6 +68,38 @@ class SystemController extends Controller
 
     }
 
+    //Retrieve the active state
+    public function getActive() {
+        $active = activeItem::where('bin','=','comp1');
+        return json_encode($active);
+    }
+
+    //Set the active state to null once a request has been fulfilled
+    public function setActiveToNull() {
+        $active = activeItem::where('bin','=','comp1');
+        $active->item = "null";
+        $active->change = 0;
+        $active->save();
+
+        $result['result'] = 'success';
+        return json_encode($result);
+    }
+
+    //Add active record when needed
+    public function addActive() {
+        $active = new activeItem();
+        $active->item = "null";
+        $active->change = 0;
+        $active->save();
+
+        return json_encode($active);
+    }
+
+    //Show all records if required, for administrative purposes
+    public function showAllActive() {
+        $active = activeItem::all();
+        return json_encode($active);
+    }
 
     //What the hell is this supposed to do, JUST FOR ZOU'S TESTING PURPOSE
     public function transmitSignal() {
@@ -80,6 +112,8 @@ class SystemController extends Controller
         }
     }
 
+
+    //Just for Zou's testing purpose
     public function checkPost(Request $request) {
 
         $value = $request->get('code');
