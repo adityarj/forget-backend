@@ -20,7 +20,7 @@ class SystemController extends Controller
 
         if (!$item->isEmpty()) {
 
-            $active = activeItem::where('bin','=','comp1');
+            $active = activeItem::first();
             $active->item = $item->item;
             $active->change = -1;
             $active->save();
