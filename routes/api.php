@@ -61,6 +61,24 @@ Route::group(['prefix' => 'system'],function () {
     ]);
 });
 
+Route::group(['prefix' => 'door'],function () {
+    Route::post('/change',[
+        'uses'=>'doorController@handleDoorChange'
+    ]);
+    Route::get('/status',[
+        'uses'=>'doorController@getDoorStatus'
+    ]);
+    Route::get('/add',[
+        'uses'=>'doorController@addDoorEntry'
+    ]);
+    Route::get('/get',[
+        'uses'=>'doorController@getDoorEntry'
+    ]);
+    Route::get('/reset',[
+        'uses'=>'doorController@resetEntry'
+    ]);
+});
+
 
 
 
