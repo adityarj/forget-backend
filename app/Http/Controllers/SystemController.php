@@ -16,7 +16,7 @@ class SystemController extends Controller
 
         $item = Item::where('weight','>=',$weight - 0.5)
             ->where('weight','<=',$weight + 0.5)
-            ->get();
+            ->first();
 
         if (!$item->isEmpty()) {
 
@@ -49,6 +49,9 @@ class SystemController extends Controller
             $item_new_value->weight = $request->get('weight');
             $item_new_value->save();
 
+            $data['status'] = 'updated existing record';
+            return json_encode($data);
+
         } else {
             $item = new Item();
             $item->weight = $request->get('weight');
@@ -61,10 +64,10 @@ class SystemController extends Controller
             $active->change = 1;
             $active->save();
 
-        }
+            $data['status'] = 'added new record';
+            return json_encode($data);
 
-        $data['status'] = 'success';
-        return json_encode($data);
+        }
 
     }
 
