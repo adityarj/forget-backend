@@ -28,7 +28,7 @@ class SystemController extends Controller
             return json_encode($item);
         } else {
 
-            $active = activeItem::where('bin','=','comp1');
+            $active = activeItem::first();
             $active->item = "Cannot identify";
             $active->change = -1;
             $active->save();
@@ -45,7 +45,7 @@ class SystemController extends Controller
         $item_original =  Item::where('weight',0)->get();
 
         if (!$item_original->isEmpty()) {
-            $item_new_value = Item::where('weight',0);
+            $item_new_value = Item::where('weight',0)->first();
             $item_new_value->weight = $request->get('weight');
             $item_new_value->save();
 
