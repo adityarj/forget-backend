@@ -65,6 +65,9 @@ Route::group(['prefix' => 'system'],function () {
     Route::get('/get',[
         'uses'=>'SystemController@showAllActive'
     ]);
+    Route::get('/delete',[
+        'uses'=>'SystemController@deleteActive'
+    ]);
 
     //Related to zou's testing
     Route::get('/contain',[
