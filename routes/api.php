@@ -27,7 +27,7 @@ Route::group(['prefix' => 'item'], function () {
         'uses'=>'ItemController@handleItem'
     ]);
 
-    Route::get('/delete',[
+    Route::post('/delete',[
         'uses'=>'ItemController@removeItem'
     ]);
 
