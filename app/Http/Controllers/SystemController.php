@@ -50,19 +50,7 @@ class SystemController extends Controller
 
     }
 
-    public function handleDoorClose(Request $request) {
-        //send push notification
-        if ($request->get('closed')) {
-            $data['status'] = 'success';
-            return json_encode($data);
-        } else {
-            $data['status'] = 'failed';
-            return json_encode($data);
-        }
-
-     }
-
-     public function transmitSignal() {
+    public function transmitSignal() {
 
         $appRequestSuccess = true;
 
@@ -70,5 +58,5 @@ class SystemController extends Controller
             $data['status'] = true;
             return json_encode($data);
         }
-     }
+    }
 }
