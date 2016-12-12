@@ -18,7 +18,7 @@ class SystemController extends Controller
             ->where('weight','<=',$weight + 0.5)
             ->first();
 
-        if (!$item->isEmpty()) {
+        if ($item) {
 
             $active = activeItem::first();
             $active->item = $item->item;
