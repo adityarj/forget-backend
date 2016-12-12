@@ -65,6 +65,8 @@ Route::group(['prefix' => 'system'],function () {
     Route::get('/get',[
         'uses'=>'SystemController@showAllActive'
     ]);
+
+    //Related to zou's testing
     Route::get('/contain',[
         'uses'=>'SystemController@transmitSignal'
     ]);

@@ -56,7 +56,7 @@ class SystemController extends Controller
             $item->bin = 0;
             $item->save();
 
-            $active = activeItem::where('bin','=','comp1');
+            $active = activeItem::first();
             $active->item = $item->item;
             $active->change = 1;
             $active->save();
