@@ -7,9 +7,6 @@ use App\Item;
 
 class SystemController extends Controller
 {
-    public function openDoor() {
-
-    }
 
     //Below api is for when a negative weight is posted by the system, update the table with negative weight
     public function getItemByWeight(Request $request) {
@@ -43,5 +40,25 @@ class SystemController extends Controller
         $data['status'] = 'success';
         return json_encode($data);
 
+    }
+
+
+    //What the hell is this supposed to do, JUST FOR ZOU'S TESTING PURPOSE
+    public function transmitSignal() {
+
+        $appRequestSuccess = true;
+
+        if ($appRequestSuccess) {
+            $data['status'] = true;
+            return json_encode($data);
+        }
+    }
+
+    public function checkPost(Request $request) {
+
+        $value = $request->get('code');
+        $result['result'] = 'You sent a code '.$value;
+
+        return json_encode($result);
     }
 }

@@ -53,11 +53,11 @@ Route::group(['prefix' => 'system'],function () {
     Route::post('/weight',[
         'uses'=>'SystemController@handleWeight'
     ]);
-    Route::post('/close',[
-        'uses'=>'SystemController@handleDoorClose'
-    ]);
     Route::get('/contain',[
         'uses'=>'SystemController@transmitSignal'
+    ]);
+    Route:;post('/test',[
+        'uses'=>'SystemController@checkPost'
     ]);
 });
 
