@@ -70,13 +70,13 @@ class SystemController extends Controller
 
     //Retrieve the active state
     public function getActive() {
-        $active = activeItem::where('bin','=','comp1');
+        $active = activeItem::where('bin','=','comp1')->get();
         return json_encode($active);
     }
 
     //Set the active state to null once a request has been fulfilled
     public function setActiveToNull() {
-        $active = activeItem::where('bin','=','comp1');
+        $active = activeItem::first();
         $active->item = "null";
         $active->change = 0;
         $active->save();
