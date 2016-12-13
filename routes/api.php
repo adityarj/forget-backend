@@ -122,10 +122,10 @@ Route::group(['prefix'=>'led'],function () {
 
 Route::group(['prefix'=>'ana'],function() {
     Route::post('/add',[
-        'uses'=>'analyticsController@add'
+        'uses'=>'analyticsConroller@add'
     ]);
     Route::get('/get',[
-        'uses'=>'analyticsController@getAll'
+        'uses'=>'analyticsConroller@getAll'
     ]);
 });
 
