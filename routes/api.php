@@ -69,6 +69,9 @@ Route::group(['prefix' => 'system'],function () {
     Route::get('/delete',[
         'uses'=>'SystemController@deleteActive'
     ]);
+    Route::get('/ard',[
+        'uses'=>'SystemController@handleArduinoCode'
+    ]);
 
     //Related to zou's testing
     Route::get('/contain',[
