@@ -120,7 +120,7 @@ Route::group(['prefix'=>'led'],function () {
     ]);
 });
 
-Route::group(['prefix'=>'ana',function() {
+Route::group(['prefix'=>'ana'],function() {
     Route::post('/add',[
         'uses'=>'analyticsController@add'
     ]);
