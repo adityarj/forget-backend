@@ -21,11 +21,11 @@ class LEDController extends Controller
     public function getLEDStatus() {
         $led = activeLED::first();
         if ($led->light == 1) {
-            $return['status'] = 'on';
+            $return = 1;
         } else {
-            $return['status'] = 'off';
+            $return = 0;
         }
-        return json_encode($return);
+        return $return;
     }
 
     //Add a new LED entry, admin use only
