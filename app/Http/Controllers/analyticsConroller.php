@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\analyticsModel;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class analyticsConroller extends Controller
         $mintime = Carbon::parse($time);
         $mintime->subMinute();
 
-        $use = analyticsConroller::where('date','<=',$maxtime)->where('date','>=',$mintime)->first();
+        $use = analyticsModel::where('date','<=',$maxtime)->where('date','>=',$mintime)->first();
         if(!$use->isEmpty()) {
             $use->counter = $use->counter + 1;
             $use->save();
@@ -25,7 +26,7 @@ class analyticsConroller extends Controller
             $result['result'] = $use->counter;
             return json_encode($result);
         } else {
-            $new_use = new analyticsConroller();
+            $new_use = new analyticsModel();
             $new_use->time = $request->get('time');
             $new_use->counter = 1;
             $new_use->save();
@@ -36,7 +37,7 @@ class analyticsConroller extends Controller
     }
 
     public function getAll() {
-        $time = analyticsConroller::all();
+        $time = analyticsModel::all();
         return json_encode($time);
     }
 }
