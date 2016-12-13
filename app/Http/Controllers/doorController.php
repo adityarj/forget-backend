@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\doorStatus;
+use App\Item;
+use App\activeItem;
+use App\activeLED;
 use Illuminate\Http\Request;
+
 
 class doorController extends Controller
 {
@@ -32,6 +36,69 @@ class doorController extends Controller
 
         return json_encode($result);
 
+    }
+
+    public function handleArduinoCode(Request $request) {
+
+        $weight = $request->get('weight');
+
+        if ($weight == 0) {
+
+        } else if($weight < 0) {
+            $item = Item::where('weight','>=',$weight - 0.5)
+                ->where('weight','<=',$weight + 0.5)
+                ->first();
+
+            if ($item) {
+
+                $active = activeItem::first();
+                $active->item = $item->item;
+                $active->change = -1;
+                $active->save();
+
+            } else {
+
+                $active = activeItem::first();
+                $active->item = "Cannot identify";
+                $active->change = -1;
+                $active->save();
+
+            }
+        } else {
+            $item_original =  Item::where('weight',0)->get();
+
+            if (!$item_original->isEmpty()) {
+                $item_new_value = Item::where('weight',0)->first();
+                $item_new_value->weight = $request->get('weight');
+                $item_new_value->save();
+
+
+            } else {
+                $item = new Item();
+                $item->weight = $request->get('weight');
+                $item->item = "none";
+                $item->bin = 0;
+                $item->save();
+
+                $active = activeItem::first();
+                $active->item = $item->item;
+                $active->change = 1;
+                $active->save();
+
+            }
+        }
+
+        $door = doorStatus::first();
+        $door->status = $request->get('status');
+        $door->save();
+
+        $led = activeLED::first();
+        if ($led->light == 1) {
+            $return = "1";
+        } else {
+            $return = "0";
+        }
+        return $return;
     }
 
     //Maintained for admin purposes, get request when required to add a new entry for new reason [production build will require to have multiple calls]
