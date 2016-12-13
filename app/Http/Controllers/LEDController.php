@@ -21,9 +21,9 @@ class LEDController extends Controller
     public function getLEDStatus() {
         $led = activeLED::first();
         if ($led->light == 1) {
-            $return = 1;
+            $return = "1";
         } else {
-            $return = 0;
+            $return = "0";
         }
         return $return;
     }
