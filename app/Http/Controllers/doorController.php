@@ -25,9 +25,9 @@ class doorController extends Controller
         $door = doorStatus::where('compartment','=','comp1');
         $status = $door->status;
         if($status == 'closed') {
-            $status['status'] = 'close';
-        } else {
             $status['status'] = 'closed';
+        } else {
+            $status['status'] = 'open';
         }
 
         return json_encode($status);
