@@ -42,7 +42,7 @@ class ItemController extends Controller
            return json_encode($item);
        } else {
            $error['Error'] = 'Item not found';
-           return json_encode($error);
+           return json_encode($request->get('item'));
        }
     }
 
