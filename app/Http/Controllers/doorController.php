@@ -94,11 +94,12 @@ class doorController extends Controller
 
         $led = activeLED::first();
         if ($led->light == 1) {
-            $return = "1";
+            $return = 1;
         } else {
-            $return = "0";
+            $return = 0;
         }
-        return $return;
+        $result['result'] = $return;
+        return json_encode($result);
     }
 
     //Maintained for admin purposes, get request when required to add a new entry for new reason [production build will require to have multiple calls]
