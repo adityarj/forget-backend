@@ -26,7 +26,7 @@ class ItemController extends Controller
 
         if (!$item->isEmpty()) {
             $result['Delete'] = 'Success';
-            Item::where('item',$request->get('item'))->delete()
+            Item::where('item',$request->get('item'))->delete();
             return json_encode($result);
         } else {
             $error['Error'] = 'Item not found';
