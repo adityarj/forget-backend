@@ -46,6 +46,7 @@ Route::group(['prefix' => 'item'], function () {
     ]);
 });
 
+//Core system functionality
 Route::group(['prefix' => 'system'],function () {
     Route::post('/minus',[
         'uses'=>'SystemController@getItemByWeight'
@@ -78,6 +79,7 @@ Route::group(['prefix' => 'system'],function () {
     ]);
 });
 
+//Related to the door
 Route::group(['prefix' => 'door'],function () {
     Route::post('/change',[
         'uses'=>'doorController@handleDoorChange'
@@ -93,6 +95,25 @@ Route::group(['prefix' => 'door'],function () {
     ]);
     Route::get('/reset',[
         'uses'=>'doorController@resetEntry'
+    ]);
+});
+
+//Related to everything LED related
+Route::group(['prefix'=>'led'],function () {
+    Route::post('/change',[
+        'uses'=>'LEDController@setLED'
+    ]);
+    Route::get('/status',[
+        'uses'=>'LEDController@getLEDStatus'
+    ]);
+    Route::get('/add',[
+        'uses'=>'LEDController@addLEDEntry'
+    ]);
+    Route::get('/get',[
+        'uses'=>'LEDController@fetchLEDEntry'
+    ]);
+    Route::get('/reset',[
+        'uses'=>'LEDController@reset'
     ]);
 });
 
