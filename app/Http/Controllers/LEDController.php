@@ -22,6 +22,7 @@ class LEDController extends Controller
         } else {
             $return['status'] = 'off';
         }
+        return json_encode($return);
     }
 
     public function addLEDEntry() {
