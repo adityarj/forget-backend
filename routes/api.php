@@ -127,7 +127,7 @@ Route::group(['prefix'=>'ana',function() {
     Route::get('/get',[
         'uses'=>'analyticsController@getAll'
     ]);
-]};
+});
 
 
 
