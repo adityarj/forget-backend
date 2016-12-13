@@ -27,7 +27,7 @@ class analyticsConroller extends Controller
             return json_encode($result);
         } else {
             $new_use = new analyticsModel();
-            $new_use->time = $request->get('time');
+            $new_use->date = $request->get('date');
             $new_use->counter = 1;
             $new_use->save();
 
