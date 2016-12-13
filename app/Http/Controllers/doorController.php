@@ -25,12 +25,12 @@ class doorController extends Controller
         $door = doorStatus::first();
         $status = $door->status;
         if($status == 'closed') {
-            $status['status'] = 'closed';
+            $result['status'] = 'closed';
         } else {
-            $status['status'] = 'open';
+            $result['status'] = 'open';
         }
 
-        return json_encode($status);
+        return json_encode($result);
 
     }
 
