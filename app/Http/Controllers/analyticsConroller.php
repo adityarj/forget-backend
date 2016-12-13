@@ -19,7 +19,7 @@ class analyticsConroller extends Controller
         $mintime->subMinute();
 
         $use = analyticsModel::where('date','<=',$maxtime)->orWhere('date','>=',$mintime)->first();
-        if(!$use->isEmpty()) {
+        if($use) {
             $use->counter = $use->counter + 1;
             $use->save();
 
