@@ -22,7 +22,7 @@ class doorController extends Controller
     //Function to get the current door status, call when the door status is desired
     public function getDoorStatus(Request $request) {
 
-        $door = doorStatus::where('compartment','=','comp1');
+        $door = doorStatus::first();
         $status = $door->status;
         if($status == 'closed') {
             $status['status'] = 'closed';
@@ -43,7 +43,6 @@ class doorController extends Controller
 
         return json_encode($door);
     }
-
 
     //Get all available door entries, for admin purposes only
     public function getDoorEntry() {
