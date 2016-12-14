@@ -90,7 +90,7 @@ class doorController extends Controller
         }
 
         $door = doorStatus::first();
-        $door->status = $request->get('status');
+        $door->status = 0;
         $door->save();
 
         $led = activeLED::first();
