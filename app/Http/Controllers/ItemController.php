@@ -9,11 +9,20 @@ class ItemController extends Controller
 {
     public function handleItem(Request $request) {
 
-        $item = new Item();
-        $item->item = $request->get('item');
-        $item->bin = $request->get('bin');
-        $item->weight = 0;
-        $item->save();
+        $item_old = Item::where('name','=','none')->first();
+
+        if ($item_old) {
+            $item_old->bin = $request->get('bin');
+            $item_old->item =$request->get('item');
+            $item_old->save();
+        } else {
+
+            $item = new Item();
+            $item->item = $request->get('item');
+            $item->bin = $request->get('bin');
+            $item->weight = 0;
+            $item->save();
+        }
 
         $data['success'] = 'true';
         return json_encode($data);
