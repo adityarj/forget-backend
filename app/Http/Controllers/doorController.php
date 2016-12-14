@@ -7,6 +7,7 @@ use App\Item;
 use App\activeItem;
 use App\activeLED;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Types\Integer;
 
 
 class doorController extends Controller
@@ -89,7 +90,7 @@ class doorController extends Controller
         }
 
         $door = doorStatus::first();
-        $door->status = $request->get('status');
+        $door->status = (int) $request->get('status');
         $door->save();
 
         $led = activeLED::first();
