@@ -29,7 +29,7 @@ class doorController extends Controller
 
         $door = doorStatus::first();
         $status = $door->status;
-        if($status == 'closed') {
+        if($status == 0) {
             $result['status'] = 'closed';
         } else {
             $result['status'] = 'open';
@@ -90,7 +90,7 @@ class doorController extends Controller
         }
 
         $door = doorStatus::first();
-        $door->status = (int) $request->get('status');
+        $door->status = $request->get('status');
         $door->save();
 
         $led = activeLED::first();
