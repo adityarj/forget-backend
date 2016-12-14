@@ -9,7 +9,7 @@ class ItemController extends Controller
 {
     public function handleItem(Request $request) {
 
-        $item_old = Item::where('name','=','none')->first();
+        $item_old = Item::where('item','=','none')->first();
 
         if ($item_old) {
             $item_old->bin = $request->get('bin');
