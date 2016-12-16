@@ -12,13 +12,8 @@ class analyticsConroller extends Controller
 
         $time = $request->get('date');
 
-        $maxtime = Carbon::parse($time);
-        $maxtime->addMinute();
 
-        $mintime = Carbon::parse($time);
-        $mintime->subMinute();
-
-        $use = analyticsModel::where('date','=',$maxtime->format("YYYY-MM-DD"))->first();
+        $use = analyticsModel::where('date','=',Carbon::parse($time)->format("YYYY-MM-DD"))->first();
         if($use) {
             $use->counter = $use->counter + 1;
             $use->save();
@@ -31,7 +26,7 @@ class analyticsConroller extends Controller
             $new_use->counter = 1;
             $new_use->save();
 
-            return json_encode($use);
+            return json_encode(Carbon::parse($time)->format("YYYY-MM-DD")));
         }
 
     }
