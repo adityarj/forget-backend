@@ -35,4 +35,9 @@ class analyticsConroller extends Controller
         $time = analyticsModel::all();
         return json_encode($time);
     }
+
+    public function delete() {
+        analyticsModel::truncate();
+        return "success";
+    }
 }
