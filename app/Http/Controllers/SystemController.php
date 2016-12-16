@@ -14,8 +14,8 @@ class SystemController extends Controller
 
         $weight = abs($request->get('weight'));
 
-        $item = Item::where('weight','>=',$weight - 0.5)
-            ->where('weight','<=',$weight + 0.5)
+        $item = Item::where('weight','>=',$weight - 8)
+            ->where('weight','<=',$weight + 8)
             ->first();
 
         if ($item) {
