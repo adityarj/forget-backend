@@ -13,7 +13,7 @@ class analyticsConroller extends Controller
         $time = $request->get('date');
 
 
-        $use = analyticsModel::where('date','=',Carbon::parse($time)->format("YYYY-MM-DD"))->first();
+        $use = analyticsModel::where('date','=',Carbon::parse($time)->format("Y-m-d"))->first();
         if($use) {
             $use->counter = $use->counter + 1;
             $use->save();
@@ -26,7 +26,7 @@ class analyticsConroller extends Controller
             $new_use->counter = 1;
             $new_use->save();
 
-            return json_encode(Carbon::parse($time)->format("YYYY-MM-DD"));
+            return json_encode(Carbon::parse($time)->format("Y-m-d"));
         }
 
     }
