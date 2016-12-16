@@ -26,7 +26,7 @@ class analyticsConroller extends Controller
             $new_use->counter = 1;
             $new_use->save();
 
-            return json_encode(Carbon::parse($time)->format("YYYY-MM-DD")));
+            return json_encode(Carbon::parse($time)->format("YYYY-MM-DD"));
         }
 
     }
