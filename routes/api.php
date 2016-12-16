@@ -128,7 +128,7 @@ Route::group(['prefix'=>'ana'],function() {
         'uses'=>'analyticsConroller@getAll'
     ]);
     Route::get('/del',[
-        'uses'=>'analyticsController@delete'
+        'uses'=>'analyticsConroller@delete'
     ]);
 });
 
