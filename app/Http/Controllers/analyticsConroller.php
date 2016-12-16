@@ -10,7 +10,7 @@ class analyticsConroller extends Controller
 {
     public function add(Request $request) {
 
-        $time = $request->get('time');
+        $time = $request->get('date');
 
         $maxtime = Carbon::parse($time);
         $maxtime->addMinute();
