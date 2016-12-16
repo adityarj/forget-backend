@@ -29,7 +29,7 @@ class SystemController extends Controller
         } else {
 
             $active = activeItem::first();
-            $active->item = "Cannot identify";
+            $active->item = "none";
             $active->change = -1;
             $active->save();
 
