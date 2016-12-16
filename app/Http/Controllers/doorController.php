@@ -47,7 +47,7 @@ class doorController extends Controller
 
         } else if($weight < 0) {
             $item = Item::where('weight','>=',$weight - 8)
-                ->orWhere('weight','<=',$weight + 8)
+                ->where('weight','<=',$weight + 8)
                 ->first();
 
             if ($item) {

@@ -31,7 +31,7 @@ class analyticsConroller extends Controller
             $new_use->counter = 1;
             $new_use->save();
 
-            return json_encode($new_use);
+            return json_encode($use);
         }
 
     }
