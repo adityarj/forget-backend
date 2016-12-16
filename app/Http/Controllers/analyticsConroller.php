@@ -18,7 +18,7 @@ class analyticsConroller extends Controller
         $mintime = Carbon::parse($time);
         $mintime->subMinute();
 
-        $use = analyticsModel::where('date','<=',$maxtime)->orWhere('date','>=',$mintime)->first();
+        $use = analyticsModel::where('date','<=',$maxtime)->where('date','>=',$mintime)->first();
         if($use) {
             $use->counter = $use->counter + 1;
             $use->save();
